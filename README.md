@@ -22,32 +22,28 @@
 
 Abrir datos, convertir formatos o cambiar de biblioteca suele exigir aprender una interfaz diferente y repetir código de integración.
 
-Iter propone comenzar por la intención del usuario:
+Iter propone expresar la intención completa en una sola instrucción:
 
 ```iter
-data = iter open "data.json"
-csv = iter convert data to "csv"
-iter export csv as "data.csv"
+iter convert data.json to data.csv
 ```
 
-**Abrir. Convertir. Exportar.** Iter debe resolver el recurso, el formato y el adaptador compatible.
+El usuario solo dice **qué quiere obtener**. Iter debe abrir el archivo, detectar los formatos, seleccionar el adaptador, convertir, guardar y cerrar automáticamente.
 
 > Los ejemplos muestran la experiencia prevista para el lanzamiento. Iter todavía no está disponible en PyPI.
 
-## Una forma común de trabajar
+## Una intención, una instrucción
 
 ```iter
-project = iter create "data" {
+iter create project.json {
     project: "Iter"
     status: "release-candidate"
 }
-
-iter save project as "project.json"
-result = iter open "project.json"
-show result.data
 ```
 
-Sin imports visibles ni configuración auxiliar en el flujo principal.
+El formato se deduce de `.json`. No hacen falta imports, rutas temporales, variables intermedias ni una orden separada para guardar.
+
+Cuando el usuario quiera controlar un detalle, podrá indicarlo. Cuando no lo indique, Iter escogerá una opción compatible automáticamente.
 
 ## Qué cambia
 
