@@ -12,7 +12,7 @@
 [![Versión](https://img.shields.io/badge/versión-0.3.0--rc.2-26c281?style=for-the-badge)](#estado-actual)
 [![Estrellas](https://img.shields.io/github/stars/Martinmanhue/iter-public?style=for-the-badge&logo=github&label=estrellas)](https://github.com/Martinmanhue/iter-public/stargazers)
 
-[Ver la vista previa](ITER_PREVIEW.md) · [Hoja de ruta](ROADMAP.md) · [Plan de lanzamiento](MARKETING_LAUNCH.md) · [Kit de presentación](PRESS_KIT.md)
+[Ver la vista previa](ITER_PREVIEW.md) · [Hoja de ruta](ROADMAP.md) · [Plan de lanzamiento](LANZAMIENTO_PUBLICO.md) · [Kit de presentación](PRESS_KIT.md)
 
 ⭐ **Marca `Star` para seguir el lanzamiento de Iter.**
 
@@ -125,7 +125,7 @@ Solo se anunciarán como disponibles las funciones implementadas y verificadas.
 2. Lee la [vista previa técnica](ITER_PREVIEW.md).
 3. Consulta la [hoja de ruta pública](ROADMAP.md).
 4. Usa los [mensajes para compartir](SHARE_ITER.md) si quieres presentarlo.
-5. Sigue el [plan de lanzamiento público](MARKETING_LAUNCH.md).
+5. Sigue el [plan de lanzamiento público](LANZAMIENTO_PUBLICO.md).
 6. Revisa el [kit de presentación](PRESS_KIT.md) para una explicación breve y reutilizable.
 7. Responde al issue [¿Qué debería unificar Iter primero?](https://github.com/Martinmanhue/iter-public/issues/1).
 
@@ -136,7 +136,7 @@ Solo se anunciarán como disponibles las funciones implementadas y verificadas.
 - [Política de seguridad](SECURITY.md)
 - [Colaboración y comentarios](CONTRIBUYENDO.md)
 - [Mensajes para compartir](SHARE_ITER.md)
-- [Plan de lanzamiento público](MARKETING_LAUNCH.md)
+- [Plan de lanzamiento público](LANZAMIENTO_PUBLICO.md)
 - [Kit de presentación](PRESS_KIT.md)
 - [Licencia de la vista previa](LICENSE)
 
