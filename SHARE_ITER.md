@@ -17,9 +17,7 @@ La vista previa técnica ya es pública. El código completo y la instalación s
 ¿Y si abrir, convertir o exportar recursos no exigiera aprender una interfaz completamente distinta cada vez?
 
 ```iter
-data = iter open "data.json"
-csv = iter convert data to "csv"
-iter export csv as "data.csv"
+iter convert data.json to data.csv
 ```
 
 Iter busca conservar la intención del usuario y resolver la operación mediante adaptadores compatibles.
