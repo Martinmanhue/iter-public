@@ -12,7 +12,7 @@
 [![Versión](https://img.shields.io/badge/versión-0.3.0--rc.2-26c281?style=for-the-badge)](#estado-actual)
 [![Estrellas](https://img.shields.io/github/stars/Martinmanhue/iter-public?style=for-the-badge&logo=github&label=estrellas)](https://github.com/Martinmanhue/iter-public/stargazers)
 
-[Ver la vista previa](ITER_PREVIEW.md) · [Consultar la hoja de ruta](ROADMAP.md) · [Comentar una prioridad](https://github.com/Martinmanhue/iter-public/issues/1) · [Compartir Iter](SHARE_ITER.md)
+[Ver la vista previa](ITER_PREVIEW.md) · [Hoja de ruta](ROADMAP.md) · [Plan de lanzamiento](LANZAMIENTO_PUBLICO.md) · [Kit de presentación](PRESS_KIT.md)
 
 ⭐ **Marca `Star` para seguir el lanzamiento de Iter.**
 
@@ -20,34 +20,25 @@
 
 ---
 
-## El problema
+## Qué es Iter
 
-Abrir datos, convertir formatos o cambiar de biblioteca suele exigir aprender una interfaz diferente y repetir código de integración.
+Iter es una propuesta para expresar operaciones comunes con una sola interfaz.
 
-Iter propone expresar la intención completa en una sola instrucción:
+Abrir datos, convertir formatos o cambiar de biblioteca suele obligar a aprender APIs distintas, repetir integraciones y reescribir partes del flujo. Iter busca reducir esa fricción para que el usuario se concentre en la intención.
 
 ```iter
 iter convert data.json to data.csv
 ```
 
-El usuario indica **qué quiere obtener**. Iter debe abrir el recurso, detectar los formatos, seleccionar un adaptador compatible, convertir, guardar y cerrar de manera coordinada.
+La idea es simple:
+
+- el usuario indica **qué quiere obtener**;
+- Iter resuelve **cómo** coordinar formatos, adaptadores y backends compatibles;
+- el flujo conserva el significado aunque cambie la herramienta subyacente.
 
 > Estos ejemplos muestran la experiencia prevista. Iter todavía no está disponible en PyPI y este repositorio no contiene el código principal.
 
-## Una intención, una instrucción
-
-```iter
-iter create project.json {
-    project: "Iter"
-    status: "release-candidate"
-}
-```
-
-El formato se deduce de `.json`. No hacen falta imports visibles, rutas temporales, variables intermedias ni una orden separada para guardar.
-
-Cuando el usuario necesite controlar un detalle, podrá indicarlo. Cuando no lo indique, Iter seleccionará una opción compatible automáticamente.
-
-## Qué busca cambiar
+## Por qué puede importar
 
 | Hoy | Con Iter |
 |---|---|
@@ -55,6 +46,26 @@ Cuando el usuario necesite controlar un detalle, podrá indicarlo. Cuando no lo 
 | Integraciones repetidas | Adaptadores reutilizables |
 | Formatos y backends resueltos manualmente | Resolución coordinada |
 | Cambiar de herramienta rehace el flujo | El significado del flujo se conserva |
+
+## Un ejemplo de experiencia
+
+```iter
+iter create report.json {
+    name: "Iter"
+    stage: "preview"
+}
+```
+
+- El formato se deduce de `.json`.
+- No hacen falta imports visibles para operaciones sencillas.
+- La intención se expresa primero; la infraestructura se coordina después.
+
+## Pilares de la vista previa pública
+
+- **Unifica:** una forma común de trabajar con recursos y operaciones.
+- **Conecta:** enlaza formatos, bibliotecas y backends mediante adaptadores.
+- **Simplifica:** reduce fricción, repeticiones e integración manual.
+- **Escala:** conserva la intención del flujo aunque cambie la implementación.
 
 ## Arquitectura
 
@@ -75,7 +86,7 @@ flowchart TD
 - **Adapter:** ejecuta operaciones concretas.
 - **Engine:** coordina el flujo.
 
-## Áreas de la primera versión
+## Áreas previstas para la primera versión
 
 | Área | Operaciones previstas |
 |---|---|
@@ -108,20 +119,25 @@ Solo se anunciarán como disponibles las funciones implementadas y verificadas.
 - credenciales, tokens o información personal;
 - funciones todavía no verificadas.
 
-## Participa
+## Cómo seguir Iter
 
-1. ⭐ Marca **Star** para seguir el lanzamiento.
+1. ⭐ Marca **Star** para seguir el proyecto.
 2. Lee la [vista previa técnica](ITER_PREVIEW.md).
 3. Consulta la [hoja de ruta pública](ROADMAP.md).
-4. Responde al issue [¿Qué debería unificar Iter primero?](https://github.com/Martinmanhue/iter-public/issues/1).
+4. Usa los [mensajes para compartir](SHARE_ITER.md) si quieres presentarlo.
+5. Sigue el [plan de lanzamiento público](LANZAMIENTO_PUBLICO.md).
+6. Revisa el [kit de presentación](PRESS_KIT.md) para una explicación breve y reutilizable.
+7. Responde al issue [¿Qué debería unificar Iter primero?](https://github.com/Martinmanhue/iter-public/issues/1).
 
 ## Documentación pública
 
 - [Vista previa técnica](ITER_PREVIEW.md)
 - [Hoja de ruta](ROADMAP.md)
 - [Política de seguridad](SECURITY.md)
-- [Colaboración y comentarios](CONTRIBUTING.md)
+- [Colaboración y comentarios](CONTRIBUYENDO.md)
 - [Mensajes para compartir](SHARE_ITER.md)
+- [Plan de lanzamiento público](LANZAMIENTO_PUBLICO.md)
+- [Kit de presentación](PRESS_KIT.md)
 - [Licencia de la vista previa](LICENSE)
 
 ---
