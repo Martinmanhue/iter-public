@@ -12,7 +12,7 @@
 [![Versión](https://img.shields.io/badge/versión-0.3.0--rc.2-26c281?style=for-the-badge)](#estado-actual)
 [![Estrellas](https://img.shields.io/github/stars/Martinmanhue/iter-public?style=for-the-badge&logo=github&label=estrellas)](https://github.com/Martinmanhue/iter-public/stargazers)
 
-[Ver la vista previa](ITER_PREVIEW.md) · [Hoja de ruta](ROADMAP.md) · [Plan de lanzamiento](LANZAMIENTO_PUBLICO.md) · [Kit de presentación](PRESS_KIT.md)
+[English](README.en.md) · [Ver la vista previa](ITER_PREVIEW.md) · [Hoja de ruta](ROADMAP.md) · [Plan de lanzamiento](LANZAMIENTO_PUBLICO.md) · [Kit de presentación](PRESS_KIT.md)
 
 ⭐ **Marca `Star` para seguir el lanzamiento de Iter.**
 
