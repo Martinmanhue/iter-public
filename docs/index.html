@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Vista previa pública de Iter: aprende una vez, usa cualquier biblioteca.">
+  <meta name="theme-color" content="#050b14">
+  <title>Iter — Aprende una vez. Usa cualquier biblioteca.</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #050b14;
+      --surface: #0b1727;
+      --surface-2: #10243a;
+      --line: #203852;
+      --text: #f4f7fb;
+      --muted: #a9b8ca;
+      --blue: #74c0fc;
+      --green: #8ce99a;
+      --yellow: #ffd43b;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(116,192,252,.16), transparent 31rem),
+        radial-gradient(circle at 90% 18%, rgba(140,233,154,.10), transparent 30rem),
+        var(--bg);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+    .container { width: min(calc(100% - 2rem), var(--max)); margin-inline: auto; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(5,11,20,.84);
+      backdrop-filter: blur(14px);
+    }
+    nav { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; font-weight: 900; }
+    .logo { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 13px; border: 1px solid #315a7e; background: linear-gradient(145deg,#102b47,#102f35); }
+    .links { display: flex; gap: 1.1rem; color: var(--muted); font-size: .94rem; }
+    .links a { text-decoration: none; }
+
+    .hero { min-height: 78vh; padding: 7rem 0 5rem; display: grid; grid-template-columns: 1.05fr .95fr; gap: 3rem; align-items: center; }
+    .pill { display: inline-flex; padding: .4rem .75rem; border: 1px solid rgba(255,212,59,.35); border-radius: 999px; color: #ffe066; background: rgba(255,212,59,.06); font-weight: 800; font-size: .86rem; }
+    h1 { margin: 1.25rem 0 1rem; font-size: clamp(3.4rem,8vw,6.4rem); line-height: .94; letter-spacing: -.06em; }
+    h1 span { display: block; background: linear-gradient(90deg,var(--blue),var(--green)); -webkit-background-clip: text; color: transparent; }
+    .lead { max-width: 720px; color: var(--muted); font-size: clamp(1.08rem,2vw,1.3rem); }
+    .actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 2rem; }
+    .btn { min-height: 48px; padding: 0 1.1rem; display: inline-flex; align-items: center; justify-content: center; border-radius: 13px; text-decoration: none; font-weight: 900; border: 1px solid var(--line); background: var(--surface); }
+    .btn.primary { color: #041019; border: 0; background: linear-gradient(135deg,var(--blue),var(--green)); }
+
+    .terminal, .card { border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(180deg,rgba(16,36,58,.95),rgba(8,21,34,.95)); box-shadow: 0 30px 90px rgba(0,0,0,.28); }
+    .terminal { padding: 1rem; }
+    .dots { display: flex; gap: .4rem; padding: .2rem .2rem .8rem; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #3a5068; }
+    pre { margin: 0; padding: 1.2rem; overflow-x: auto; border-radius: 15px; background: #06111d; border: 1px solid rgba(255,255,255,.05); color: #d7eaff; line-height: 1.6; }
+    code { font-family: "SFMono-Regular",Consolas,monospace; }
+
+    section { padding: 5rem 0; }
+    h2 { margin: 0 0 .8rem; font-size: clamp(2.2rem,5vw,3.7rem); line-height: 1.05; letter-spacing: -.04em; }
+    .section-intro { max-width: 760px; color: var(--muted); margin-bottom: 2.2rem; }
+    .grid3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+    .card { padding: 1.35rem; }
+    .card h3 { margin-top: .3rem; }
+    .num { display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; background: rgba(116,192,252,.12); color: var(--blue); font-weight: 900; }
+    .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .compare ul { margin: .5rem 0 0; padding-left: 1.2rem; color: var(--muted); }
+    .compare strong { color: var(--green); }
+    .architecture { display: grid; grid-template-columns: repeat(5,1fr); gap: .7rem; }
+    .layer { padding: 1rem .75rem; text-align: center; border-radius: 14px; border: 1px solid var(--line); background: rgba(255,255,255,.025); }
+    .layer strong { display: block; color: var(--blue); margin-bottom: .25rem; }
+    .status { display: grid; grid-template-columns: repeat(4,1fr); gap: .8rem; }
+    .status div { padding: 1rem; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.025); }
+    .status span { display: block; color: var(--muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; }
+    .status strong { display: block; margin-top: .35rem; }
+    .notice { margin-top: 1.2rem; padding: 1rem; border-left: 4px solid var(--yellow); background: rgba(255,212,59,.06); color: #fff3bf; }
+    .cta { text-align: center; padding: 4rem 1.25rem; border: 1px solid #2b516f; border-radius: 28px; background: linear-gradient(145deg,rgba(116,192,252,.12),rgba(140,233,154,.07)); }
+    .cta p { color: var(--muted); max-width: 650px; margin: 0 auto 1.4rem; }
+    footer { padding: 3rem 0 4rem; color: var(--muted); border-top: 1px solid var(--line); }
+
+    @media (max-width: 900px) {
+      .hero,.compare { grid-template-columns: 1fr; }
+      .grid3 { grid-template-columns: 1fr; }
+      .architecture { grid-template-columns: 1fr 1fr; }
+      .status { grid-template-columns: 1fr 1fr; }
+      .links { display: none; }
+    }
+    @media (max-width: 520px) {
+      .architecture,.status { grid-template-columns: 1fr; }
+      h1 { font-size: 3.25rem; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a class="brand" href="#inicio"><span class="logo">I</span>Iter</a>
+      <div class="links"><a href="#problema">Problema</a><a href="#demo">Demo</a><a href="#arquitectura">Arquitectura</a><a href="#estado">Estado</a></div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero container" id="inicio">
+    <div>
+      <span class="pill">Vista previa pública · todavía no instalable</span>
+      <h1>Aprende una vez.<span>Usa cualquier biblioteca.</span></h1>
+      <p class="lead">Iter busca ofrecer una experiencia común para trabajar con recursos, formatos, bibliotecas y backends. El usuario expresa la intención; Iter coordina la ejecución.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/Martinmanhue/iter-public">⭐ Ver en GitHub</a>
+        <a class="btn" href="#demo">Ver la demostración</a>
+      </div>
+    </div>
+    <div class="terminal">
+      <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <pre><code>iter convert data.json to data.csv
+
+# una intención
+# una instrucción</code></pre>
+    </div>
+  </section>
+
+  <section id="problema"><div class="container">
+    <h2>El problema no es aprender. Es reaprender lo mismo.</h2>
+    <p class="section-intro">Operaciones parecidas suelen tener nombres, estructuras y configuraciones diferentes. Iter busca conservar la intención común sin ocultar diferencias importantes.</p>
+    <div class="grid3">
+      <article class="card"><span class="num">1</span><h3>Expresa la intención</h3><p>Convierte, crea, analiza, busca o guarda mediante instrucciones claras.</p></article>
+      <article class="card"><span class="num">2</span><h3>Iter resuelve</h3><p>Identifica el recurso, los formatos y los adaptadores compatibles.</p></article>
+      <article class="card"><span class="num">3</span><h3>El adaptador ejecuta</h3><p>La operación se realiza sin convertir toda herramienta en una caja negra.</p></article>
+    </div>
+  </div></section>
+
+  <section id="demo"><div class="container">
+    <h2>Una experiencia centrada en la intención</h2>
+    <p class="section-intro">Los ejemplos muestran el diseño previsto para el lanzamiento. La sintaxis puede ajustarse durante la validación.</p>
+    <div class="compare">
+      <article class="card"><h3>Hoy</h3><ul><li>Imports y configuración.</li><li>APIs diferentes.</li><li>Resolución manual de formatos.</li><li>Código de integración repetido.</li></ul></article>
+      <article class="card"><h3><strong>Con Iter</strong></h3><ul><li>La intención aparece primero.</li><li>Resolución coordinada.</li><li>Adaptadores reutilizables.</li><li>Control manual solo cuando hace falta.</li></ul></article>
+    </div>
+    <div class="terminal" style="margin-top:1rem"><div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><pre><code>iter create project.json {
+    project: "Iter"
+    status: "preview"
+}
+
+iter analyze sales.csv with pandas</code></pre></div>
+    <div class="notice">Iter todavía no está publicado en PyPI. Este sitio no contiene una descarga, un paquete demostrativo ni el código principal.</div>
+  </div></section>
+
+  <section id="arquitectura"><div class="container">
+    <h2>Everything is a Resource</h2>
+    <p class="section-intro">Iter separa representación, resolución, selección y ejecución para mantener clara la experiencia pública.</p>
+    <div class="architecture">
+      <div class="layer"><strong>Resource</strong>Representación</div>
+      <div class="layer"><strong>Resolver</strong>Identificación</div>
+      <div class="layer"><strong>Registry</strong>Selección</div>
+      <div class="layer"><strong>Adapter</strong>Ejecución</div>
+      <div class="layer"><strong>Engine</strong>Coordinación</div>
+    </div>
+  </div></section>
+
+  <section id="estado"><div class="container">
+    <h2>Estado real del proyecto</h2>
+    <p class="section-intro">La transparencia importa más que aparentar que todo está terminado.</p>
+    <div class="status">
+      <div><span>Versión</span><strong>0.3.0-rc.2</strong></div>
+      <div><span>Canal</span><strong>Release Candidate</strong></div>
+      <div><span>Código principal</span><strong>Privado</strong></div>
+      <div><span>Instalación</span><strong>No publicada</strong></div>
+    </div>
+  </div></section>
+
+  <section><div class="container"><div class="cta">
+    <h2>¿Qué debería unificar Iter primero?</h2>
+    <p>Comparte la biblioteca, el formato o el backend que hoy te obliga a repetir más código.</p>
+    <a class="btn primary" href="https://github.com/Martinmanhue/iter-public/issues/1">Participar en GitHub</a>
+  </div></div></section>
+</main>
+
+<footer><div class="container"><strong>Iter</strong> — Aprende una vez. Usa cualquier biblioteca.<br>Vista previa pública. Solo se anunciarán como disponibles las funciones implementadas y verificadas.</div></footer>
+</body>
+</html>
