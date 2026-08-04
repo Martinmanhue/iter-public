@@ -1,5 +1,7 @@
 <div align="center">
 
+![Iter — Aprende una vez. Usa cualquier biblioteca.](assets/iter-hero.svg)
+
 # ITER
 
 ### Aprende una vez. Usa cualquier biblioteca.
@@ -10,9 +12,9 @@
 [![Versión](https://img.shields.io/badge/versión-0.3.0--rc.2-26c281?style=for-the-badge)](#estado-actual)
 [![Estrellas](https://img.shields.io/github/stars/Martinmanhue/iter-public?style=for-the-badge&logo=github&label=estrellas)](https://github.com/Martinmanhue/iter-public/stargazers)
 
-[Ver la vista previa](ITER_PREVIEW.md) · [Comentar una prioridad](https://github.com/Martinmanhue/iter-public/issues/1) · [Compartir Iter](SHARE_ITER.md)
+[Ver la vista previa](ITER_PREVIEW.md) · [Consultar la hoja de ruta](ROADMAP.md) · [Comentar una prioridad](https://github.com/Martinmanhue/iter-public/issues/1) · [Compartir Iter](SHARE_ITER.md)
 
-⭐ **Si la idea te parece útil, marca `Star` para seguir el lanzamiento.**
+⭐ **Marca `Star` para seguir el lanzamiento de Iter.**
 
 </div>
 
@@ -28,9 +30,9 @@ Iter propone expresar la intención completa en una sola instrucción:
 iter convert data.json to data.csv
 ```
 
-El usuario solo dice **qué quiere obtener**. Iter debe abrir el archivo, detectar los formatos, seleccionar el adaptador, convertir, guardar y cerrar automáticamente.
+El usuario indica **qué quiere obtener**. Iter debe abrir el recurso, detectar los formatos, seleccionar un adaptador compatible, convertir, guardar y cerrar de manera coordinada.
 
-> Los ejemplos muestran la experiencia prevista para el lanzamiento. Iter todavía no está disponible en PyPI.
+> Estos ejemplos muestran la experiencia prevista. Iter todavía no está disponible en PyPI y este repositorio no contiene el código principal.
 
 ## Una intención, una instrucción
 
@@ -41,11 +43,11 @@ iter create project.json {
 }
 ```
 
-El formato se deduce de `.json`. No hacen falta imports, rutas temporales, variables intermedias ni una orden separada para guardar.
+El formato se deduce de `.json`. No hacen falta imports visibles, rutas temporales, variables intermedias ni una orden separada para guardar.
 
-Cuando el usuario quiera controlar un detalle, podrá indicarlo. Cuando no lo indique, Iter escogerá una opción compatible automáticamente.
+Cuando el usuario necesite controlar un detalle, podrá indicarlo. Cuando no lo indique, Iter seleccionará una opción compatible automáticamente.
 
-## Qué cambia
+## Qué busca cambiar
 
 | Hoy | Con Iter |
 |---|---|
@@ -78,8 +80,10 @@ flowchart TD
 | Área | Operaciones previstas |
 |---|---|
 | Entrada y salida | `open`, `create`, `save`, `close` |
+| Resolución | `resolve` |
 | Búsqueda | `find`, `search` |
 | Transformación | `convert`, `export` |
+| Internet | `download`, `upload` |
 | Gestión | `copy`, `move`, `rename`, `delete` |
 | Colecciones | `list`, `count`, `filter` |
 | Backend | `use`, `reset`, `current` |
@@ -91,9 +95,9 @@ flowchart TD
 - **Fase:** corrección de errores y validación privada
 - **Código principal:** privado
 - **PyPI:** todavía no existe una distribución oficial
-- **Este repositorio:** presentación y vista previa técnica; no contiene Iter completo
+- **Este repositorio:** presentación, documentación y vista previa; no contiene Iter completo
 
-Solo se anunciarán como disponibles las funciones que hayan sido implementadas y verificadas.
+Solo se anunciarán como disponibles las funciones implementadas y verificadas.
 
 ## Qué permanece privado
 
@@ -108,7 +112,17 @@ Solo se anunciarán como disponibles las funciones que hayan sido implementadas 
 
 1. ⭐ Marca **Star** para seguir el lanzamiento.
 2. Lee la [vista previa técnica](ITER_PREVIEW.md).
-3. Abre un [issue](https://github.com/Martinmanhue/iter-public/issues/1) con la biblioteca, el formato o el backend que te gustaría ver primero.
+3. Consulta la [hoja de ruta pública](ROADMAP.md).
+4. Responde al issue [¿Qué debería unificar Iter primero?](https://github.com/Martinmanhue/iter-public/issues/1).
+
+## Documentación pública
+
+- [Vista previa técnica](ITER_PREVIEW.md)
+- [Hoja de ruta](ROADMAP.md)
+- [Política de seguridad](SECURITY.md)
+- [Colaboración y comentarios](CONTRIBUTING.md)
+- [Mensajes para compartir](SHARE_ITER.md)
+- [Licencia de la vista previa](LICENSE)
 
 ---
 
