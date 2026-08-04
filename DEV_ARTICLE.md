@@ -9,12 +9,10 @@ Iter nace de una idea sencilla:
 ## Aprende una vez. Usa cualquier biblioteca.
 
 ```iter
-data = iter open "data.json"
-csv = iter convert data to "csv"
-iter export csv as "data.csv"
+iter convert data.json to data.csv
 ```
 
-La intención permanece clara: abrir, convertir y exportar. Iter debe identificar el recurso, resolver el formato, consultar los adaptadores compatibles y coordinar la ejecución.
+El usuario expresa una sola intención. Iter debe abrir el recurso, deducir los formatos, seleccionar un adaptador compatible, convertir, guardar y cerrar automáticamente.
 
 ## Everything is a Resource
 
