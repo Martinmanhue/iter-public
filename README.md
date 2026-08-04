@@ -10,7 +10,7 @@
 [![Versión](https://img.shields.io/badge/versión-0.3.0--rc.2-26c281?style=for-the-badge)](#estado-actual)
 [![Estrellas](https://img.shields.io/github/stars/Martinmanhue/iter-public?style=for-the-badge&logo=github&label=estrellas)](https://github.com/Martinmanhue/iter-public/stargazers)
 
-[Ver la vista previa](ITER_PREVIEW.md) · [Comentar una prioridad](https://github.com/Martinmanhue/iter-public/issues) · [Compartir Iter](SHARE_ITER.md)
+[Ver la vista previa](ITER_PREVIEW.md) · [Comentar una prioridad](https://github.com/Martinmanhue/iter-public/issues/1) · [Compartir Iter](SHARE_ITER.md)
 
 ⭐ **Si la idea te parece útil, marca `Star` para seguir el lanzamiento.**
 
@@ -112,7 +112,7 @@ Solo se anunciarán como disponibles las funciones que hayan sido implementadas 
 
 1. ⭐ Marca **Star** para seguir el lanzamiento.
 2. Lee la [vista previa técnica](ITER_PREVIEW.md).
-3. Abre un [issue](https://github.com/Martinmanhue/iter-public/issues) con la biblioteca, el formato o el backend que te gustaría ver primero.
+3. Abre un [issue](https://github.com/Martinmanhue/iter-public/issues/1) con la biblioteca, el formato o el backend que te gustaría ver primero.
 
 ---
 
