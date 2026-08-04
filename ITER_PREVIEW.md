@@ -8,56 +8,53 @@
 
 Iter busca que el usuario exprese primero su intención. La resolución del formato, la biblioteca y el backend queda coordinada por el sistema.
 
-## Abrir, convertir y exportar
+## Convertir con una sola intención
 
 ```iter
-data = iter open "data.json"
-csv = iter convert data to "csv"
-iter export csv as "data.csv"
+iter convert data.json to data.csv
 ```
 
-El flujo conserva tres acciones claras:
+Para el usuario es una sola operación. Internamente, Iter debe:
 
-1. abrir un recurso;
-2. convertirlo;
-3. exportarlo.
+1. localizar y abrir el recurso;
+2. detectar el formato de entrada;
+3. deducir el formato de salida;
+4. seleccionar un adaptador compatible;
+5. convertir, guardar y cerrar.
 
-## Crear, guardar y abrir
+## Crear y guardar en una instrucción
 
 ```iter
-project = iter create "data" {
+iter create project.json {
     project: "Iter"
     status: "preview"
 }
-
-iter save project as "project.json"
-result = iter open "project.json"
-show result.data
 ```
 
-Salida prevista:
+Iter deduce el formato por la extensión y guarda el recurso automáticamente.
 
-```text
-{project: "Iter", status: "preview"}
-```
+## Backend automático, control opcional
 
-## Seleccionar una biblioteca o backend
+La experiencia normal no exige escoger una biblioteca:
 
 ```iter
-iter use "pandas"
-data = iter open "sales.csv"
-summary = iter analyze data
-show summary
+iter analyze sales.csv
 ```
 
-El usuario indica qué quiere hacer. Iter debe resolver qué adaptador disponible puede ejecutarlo.
+Si el usuario necesita control explícito, puede indicarlo sin reconstruir el flujo:
+
+```iter
+iter analyze sales.csv with pandas
+```
+
+Iter selecciona automáticamente un adaptador compatible cuando el usuario no especifica uno.
 
 ## Consultar el sistema
 
 ```iter
-show iter about
-show iter capabilities
-show iter adapters
+iter info
+iter capabilities
+iter adapters
 ```
 
 ## Cómo funciona por dentro
@@ -81,8 +78,12 @@ flowchart TD
 | `Adapter` | Ejecutar operaciones concretas |
 | `Engine` | Coordinar el sistema |
 
-## Qué busca reducir
+## Principios de la experiencia
 
+- una intención completa debe caber normalmente en una instrucción;
+- formatos deducidos por nombres, extensiones y contexto;
+- adaptador automático por defecto y selección manual opcional;
+- errores explicados con lenguaje directo;
 - imports repetitivos en los ejemplos principales;
 - configuración auxiliar antes de expresar la intención;
 - nombres completamente distintos para operaciones equivalentes;
