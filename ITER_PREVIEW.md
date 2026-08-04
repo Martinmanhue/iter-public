@@ -41,7 +41,7 @@ La experiencia normal no exige escoger una biblioteca:
 iter analyze sales.csv
 ```
 
-Si el usuario necesita control explícito, puede indicarlo sin reconstruir el flujo:
+Cuando el usuario necesita control explícito, puede indicarlo sin reconstruir el flujo:
 
 ```iter
 iter analyze sales.csv with pandas
@@ -80,11 +80,17 @@ flowchart TD
 
 ## Principios de la experiencia
 
-- una intención completa debe caber normalmente en una instrucción;
+Iter busca ofrecer:
+
+- una intención completa que normalmente quepa en una instrucción;
 - formatos deducidos por nombres, extensiones y contexto;
 - adaptador automático por defecto y selección manual opcional;
 - errores explicados con lenguaje directo;
-- imports repetitivos en los ejemplos principales;
+- consistencia entre operaciones equivalentes.
+
+Iter busca evitar en los ejemplos principales:
+
+- imports repetitivos;
 - configuración auxiliar antes de expresar la intención;
 - nombres completamente distintos para operaciones equivalentes;
 - selección manual de cada detalle del backend;
@@ -125,6 +131,6 @@ La sintaxis puede ajustarse antes del lanzamiento. Solo se anunciarán como disp
 
 ---
 
-[Volver a la portada](README.md) · [Proponer una prioridad](https://github.com/Martinmanhue/iter-public/issues)
+[Volver a la portada](README.md) · [Consultar la hoja de ruta](ROADMAP.md) · [Proponer una prioridad](https://github.com/Martinmanhue/iter-public/issues/1)
 
 **Iter — Everything is a Resource.**
