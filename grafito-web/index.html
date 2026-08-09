@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <title>Grafito</title>
 <link rel="manifest" href="./manifest.webmanifest">
-<link rel="stylesheet" href="./style.css?v=14">
+<link rel="stylesheet" href="./style.css?v=15">
 </head>
 <body>
 <div id="app">
@@ -26,20 +26,21 @@
     <div class="small">La clave no se guarda. El estado de Grafito se cifra localmente en este navegador.</div>
   </div>
 </div>
-<script src="./grafito-v7.js?v=14-base"></script>
-<script src="./grafito-v9-patch.js?v=14-knowledge"></script>
-<script src="./grafito-v10-patch.js?v=14-intent"></script>
-<script src="./grafito-v11-patch.js?v=14-general"></script>
-<script src="./grafito-v12-patch.js?v=14-synthesis"></script>
-<script src="./grafito-v13-patch.js?v=14-capabilities"></script>
-<script src="./grafito-v14-patch.js?v=14-reason-action"></script>
+<script src="./grafito-v7.js?v=15-base"></script>
+<script src="./grafito-v9-patch.js?v=15-knowledge"></script>
+<script src="./grafito-v10-patch.js?v=15-intent"></script>
+<script src="./grafito-v11-patch.js?v=15-general"></script>
+<script src="./grafito-v12-patch.js?v=15-synthesis"></script>
+<script src="./grafito-v13-patch.js?v=15-capabilities"></script>
+<script src="./grafito-v14-patch.js?v=15-reason-action"></script>
+<script src="./grafito-v15-patch.js?v=15-self-autonomy"></script>
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', async () => {
       try {
         const regs = await navigator.serviceWorker.getRegistrations();
         for (const r of regs) { if (r.scope.includes('/iter-public/')) await r.update().catch(() => {}); }
-        const r = await navigator.serviceWorker.register('./sw.js?v=14', { scope: './', updateViaCache: 'none' });
+        const r = await navigator.serviceWorker.register('./sw.js?v=15', { scope: './', updateViaCache: 'none' });
         r.update().catch(() => {});
       } catch (_) {}
     });
