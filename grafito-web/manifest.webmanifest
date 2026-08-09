@@ -1,0 +1,11 @@
+{
+  "name": "Grafito",
+  "short_name": "Grafito",
+  "description": "Presencia computacional local y privada de Grafito.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#090b0a",
+  "theme_color": "#090b0a",
+  "orientation": "any"
+}
