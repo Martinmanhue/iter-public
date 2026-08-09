@@ -1,4 +1,5 @@
 (() => {
+  // Do not replace a genuine browser-native language model if one exists.
   if (globalThis.LanguageModel || globalThis.ai?.languageModel) return;
 
   let pipePromise = null;
@@ -10,14 +11,23 @@
     if (!pipePromise) {
       pipePromise = (async () => {
         const mod = await import('https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1');
+        const r = document.querySelector('#reply');
+        if (r) r.textContent = 'Preparando motor local por CPU…';
+
+        // Transformers.js runs on CPU/WASM by default in the browser when no
+        // WebGPU device is requested. q4 lowers memory/bandwidth requirements.
         generator = await mod.pipeline('text-generation', MODEL, {
-          dtype: 'q8',
+          dtype: 'q4',
           progress_callback: (p) => {
-            const r = document.querySelector('#reply');
-            const v = Number(p?.progress);
-            if (r) r.textContent = Number.isFinite(v)
-              ? `Preparando motor local por CPU… ${Math.round(v * 100)}%`
-              : 'Preparando motor local por CPU…';
+            const el = document.querySelector('#reply');
+            const raw = Number(p?.progress);
+            if (!el) return;
+            if (Number.isFinite(raw)) {
+              const pct = raw <= 1 ? raw * 100 : raw;
+              el.textContent = `Preparando motor local por CPU… ${Math.max(0, Math.min(100, Math.round(pct)))}%`;
+            } else {
+              el.textContent = 'Preparando motor local por CPU…';
+            }
           },
         });
         return generator;
@@ -26,17 +36,10 @@
     return pipePromise;
   }
 
+  // This deliberately presents the same tiny interface expected by Grafito's
+  // subordinate language adapter. The cognitive state remains owned by Grafito.
   globalThis.LanguageModel = {
     async create({ systemPrompt = '' } = {}) {
-      try {
-        if (navigator.gpu) {
-          const adapter = await navigator.gpu.requestAdapter();
-          if (adapter) throw new Error('__GRAFITO_PREFER_WEBGPU__');
-        }
-      } catch (e) {
-        if (String(e).includes('__GRAFITO_PREFER_WEBGPU__')) throw e;
-      }
-
       return {
         async prompt(text) {
           const gen = await getGenerator();
