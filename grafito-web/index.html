@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <title>Grafito</title>
 <link rel="manifest" href="./manifest.webmanifest">
-<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./style.css?v=8">
 </head>
 <body>
 <div id="app">
@@ -26,14 +26,14 @@
     <div class="small">La clave no se guarda. El estado de Grafito se cifra localmente en este navegador.</div>
   </div>
 </div>
-<script src="./grafito-v7.js?v=7"></script>
+<script src="./grafito-v7.js?v=8"></script>
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', async () => {
       try {
         const regs = await navigator.serviceWorker.getRegistrations();
         for (const r of regs) { if (r.scope.includes('/iter-public/')) await r.update().catch(() => {}); }
-        const r = await navigator.serviceWorker.register('./sw.js?v=7', { scope: './', updateViaCache: 'none' });
+        const r = await navigator.serviceWorker.register('./sw.js?v=8', { scope: './', updateViaCache: 'none' });
         r.update().catch(() => {});
       } catch (_) {}
     });
