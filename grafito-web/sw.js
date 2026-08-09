@@ -1,6 +1,6 @@
-const SHELL_CACHE='grafito-shell-v13';
-const RUNTIME_CACHE='grafito-runtime-v13';
-const SHELL=['./','./index.html','./style.css?v=13','./grafito-v7.js?v=13-base','./grafito-v9-patch.js?v=13-knowledge','./grafito-v10-patch.js?v=13-intent','./grafito-v11-patch.js?v=13-general','./grafito-v12-patch.js?v=13-synthesis','./grafito-v13-patch.js?v=13-capabilities','./manifest.webmanifest'];
+const SHELL_CACHE='grafito-shell-v14';
+const RUNTIME_CACHE='grafito-runtime-v14';
+const SHELL=['./','./index.html','./style.css?v=14','./grafito-v7.js?v=14-base','./grafito-v9-patch.js?v=14-knowledge','./grafito-v10-patch.js?v=14-intent','./grafito-v11-patch.js?v=14-general','./grafito-v12-patch.js?v=14-synthesis','./grafito-v13-patch.js?v=14-capabilities','./grafito-v14-patch.js?v=14-reason-action','./manifest.webmanifest'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(SHELL_CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{const names=await caches.keys();await Promise.all(names.filter(n=>n.startsWith('grafito-')&&![SHELL_CACHE,RUNTIME_CACHE].includes(n)).map(n=>caches.delete(n)));await self.clients.claim()})())});
 async function fresh(request){try{const response=await fetch(request,{cache:'no-store'});if(response&&response.ok){const c=await caches.open(RUNTIME_CACHE);c.put(request,response.clone()).catch(()=>{})}return response}catch(e){const hit=await caches.match(request);if(hit)return hit;if(request.mode==='navigate')return(await caches.match('./index.html'))||(await caches.match('./'));throw e}}
