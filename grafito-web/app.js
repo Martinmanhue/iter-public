@@ -1,6 +1,6 @@
 (() => {
 const SALT = "b49b2f22c383a00b58bcee3c6351172d";
-const EXPECTED = "a841a178c7a43a4685affe7b83e73542d9941d37219a6987f5c4de3722b313e3";
+const EXPECTED = "5ce489bde197e06c37b4cf74e26de70ffe1d7e842c0cc4d4bf19271e6c82ba00";
 const te = new TextEncoder(), td = new TextDecoder();
 let vaultKey = null, state = null;
 const field=document.querySelector('#field'),reply=document.querySelector('#reply'),entry=document.querySelector('#entry'),lock=document.querySelector('#lock'),keyInput=document.querySelector('#key'),err=document.querySelector('#err');
