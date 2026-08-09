@@ -26,13 +26,14 @@
     <div class="small">La clave no se guarda. El estado de Grafito se cifra localmente en este navegador.</div>
   </div>
 </div>
-<script src="./cpu-language.js?v=5"></script>
-<script type="module" src="./app.js?v=5"></script>
+<script src="./grafito-v6.js?v=6"></script>
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', async () => {
       try {
-        const r = await navigator.serviceWorker.register('./sw.js?v=5', { scope: './', updateViaCache: 'none' });
+        const regs = await navigator.serviceWorker.getRegistrations();
+        for (const r of regs) { if (r.scope.includes('/iter-public/')) await r.update().catch(() => {}); }
+        const r = await navigator.serviceWorker.register('./sw.js?v=6', { scope: './', updateViaCache: 'none' });
         r.update().catch(() => {});
       } catch (_) {}
     });
