@@ -1,73 +1,52 @@
-const SHELL_CACHE = 'grafito-shell-v4';
-const RUNTIME_CACHE = 'grafito-runtime-v4';
-
-const SHELL = [
-  './',
-  './index.html',
-  './style.css',
-  './app.js?v=4',
-  './cpu-language.js?v=4',
-  './manifest.webmanifest'
-];
+const SHELL_CACHE = 'grafito-shell-v5';
+const RUNTIME_CACHE = 'grafito-runtime-v5';
+const SHELL = ['./','./index.html','./style.css','./app.js?v=5','./cpu-language.js?v=5','./manifest.webmanifest'];
 
 self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(SHELL_CACHE)
-      .then(cache => cache.addAll(SHELL))
-      .then(() => self.skipWaiting())
-  );
+  event.waitUntil(caches.open(SHELL_CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', event => {
   event.waitUntil((async () => {
     const names = await caches.keys();
-    await Promise.all(names
-      .filter(name => name.startsWith('grafito-') && ![SHELL_CACHE, RUNTIME_CACHE].includes(name))
-      .map(name => caches.delete(name)));
+    await Promise.all(names.filter(n => n.startsWith('grafito-') && ![SHELL_CACHE,RUNTIME_CACHE].includes(n)).map(n => caches.delete(n)));
     await self.clients.claim();
   })());
 });
 
-async function cacheFirst(request, cacheName) {
-  const cache = await caches.open(cacheName);
-  const hit = await cache.match(request);
-  if (hit) return hit;
-  const response = await fetch(request);
+async function put(cacheName, request, response) {
   if (response && (response.ok || response.type === 'opaque')) {
-    cache.put(request, response.clone()).catch(() => {});
+    const c = await caches.open(cacheName);
+    c.put(request, response.clone()).catch(() => {});
   }
   return response;
 }
 
-self.addEventListener('fetch', event => {
-  const request = event.request;
-  if (request.method !== 'GET') return;
-  const url = new URL(request.url);
+async function networkFirst(request) {
+  try {
+    return await put(RUNTIME_CACHE, request, await fetch(request, { cache: 'no-cache' }));
+  } catch (_) {
+    const hit = await caches.match(request, { ignoreSearch: false });
+    if (hit) return hit;
+    if (request.mode === 'navigate') return (await caches.match('./index.html')) || (await caches.match('./'));
+    throw _;
+  }
+}
 
-  if (url.origin === self.location.origin) {
-    event.respondWith((async () => {
-      const cached = await caches.match(request);
-      if (cached) return cached;
-      try {
-        const response = await fetch(request);
-        if (response && response.ok) {
-          const cache = await caches.open(RUNTIME_CACHE);
-          cache.put(request, response.clone()).catch(() => {});
-        }
-        return response;
-      } catch (err) {
-        if (request.mode === 'navigate') {
-          return (await caches.match('./index.html')) || (await caches.match('./'));
-        }
-        throw err;
-      }
-    })());
+async function cacheFirst(request) {
+  const hit = await caches.match(request);
+  if (hit) return hit;
+  return put(RUNTIME_CACHE, request, await fetch(request));
+}
+
+self.addEventListener('fetch', event => {
+  const r = event.request;
+  if (r.method !== 'GET') return;
+  const u = new URL(r.url);
+  if (u.origin === self.location.origin) {
+    // While online prefer fresh Grafito code; when offline use the materialized shell.
+    event.respondWith(networkFirst(r));
     return;
   }
-
-  // Cache the Transformers.js module once it has been fetched online.
-  // Model weights and ONNX/WASM assets are cached by Transformers.js itself.
-  if (url.hostname === 'cdn.jsdelivr.net') {
-    event.respondWith(cacheFirst(request, RUNTIME_CACHE));
-  }
+  if (u.hostname === 'cdn.jsdelivr.net') event.respondWith(cacheFirst(r));
 });
