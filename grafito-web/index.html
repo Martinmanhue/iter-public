@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <title>Grafito</title>
 <link rel="manifest" href="./manifest.webmanifest">
-<link rel="stylesheet" href="./style.css?v=18">
+<link rel="stylesheet" href="./style.css?v=19">
 </head>
 <body>
 <div id="app">
@@ -26,19 +26,20 @@
     <div class="small">La clave no se guarda. El estado de Grafito se cifra localmente en este navegador.</div>
   </div>
 </div>
-<script src="./grafito-v7.js?v=18-base"></script>
-<script src="./grafito-v9-patch.js?v=18-knowledge"></script>
-<script src="./grafito-v10-patch.js?v=18-intent"></script>
-<script src="./grafito-v11-patch.js?v=18-general"></script>
-<script src="./grafito-v12-patch.js?v=18-synthesis"></script>
-<script src="./grafito-v13-patch.js?v=18-capabilities"></script>
-<script src="./grafito-v14-patch.js?v=18-reason-action"></script>
-<script src="./grafito-v15-patch.js?v=18-self-autonomy"></script>
-<script src="./grafito-v16-orchestrator.js?v=18-orchestrator"></script>
-<script src="./grafito-v17-thought-core.js?v=18-thought"></script>
-<script src="./grafito-v18-cognitive-core.js?v=18-cognitive"></script>
+<script src="./grafito-v7.js?v=19-base"></script>
+<script src="./grafito-v9-patch.js?v=19-knowledge"></script>
+<script src="./grafito-v10-patch.js?v=19-intent"></script>
+<script src="./grafito-v11-patch.js?v=19-general"></script>
+<script src="./grafito-v12-patch.js?v=19-synthesis"></script>
+<script src="./grafito-v13-patch.js?v=19-capabilities"></script>
+<script src="./grafito-v14-patch.js?v=19-reason-action"></script>
+<script src="./grafito-v15-patch.js?v=19-self-autonomy"></script>
+<script src="./grafito-v16-orchestrator.js?v=19-orchestrator"></script>
+<script src="./grafito-v17-thought-core.js?v=19-thought"></script>
+<script src="./grafito-v18-cognitive-core.js?v=19-cognitive"></script>
+<script src="./grafito-v19-action-creator.js?v=19-creator"></script>
 <script>
-if('serviceWorker' in navigator){window.addEventListener('load',async()=>{try{const regs=await navigator.serviceWorker.getRegistrations();for(const r of regs){if(r.scope.includes('/iter-public/'))await r.update().catch(()=>{});}const r=await navigator.serviceWorker.register('./sw.js?v=18',{scope:'./',updateViaCache:'none'});r.update().catch(()=>{});}catch(_){}});}
+if('serviceWorker' in navigator){window.addEventListener('load',async()=>{try{const regs=await navigator.serviceWorker.getRegistrations();for(const r of regs){if(r.scope.includes('/iter-public/'))await r.update().catch(()=>{});}const r=await navigator.serviceWorker.register('./sw.js?v=19',{scope:'./',updateViaCache:'none'});r.update().catch(()=>{});}catch(_){}});}
 document.addEventListener('click',event=>{if(event.target&&event.target.id==='unlock')navigator.storage?.persist?.().catch?.(()=>{});},{passive:true});
 </script>
 </body>
