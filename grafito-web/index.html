@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <title>Grafito</title>
 <link rel="manifest" href="./manifest.webmanifest">
-<link rel="stylesheet" href="./style.css?v=20">
+<link rel="stylesheet" href="./style.css?v=21">
 </head>
 <body>
 <div id="app">
@@ -26,21 +26,22 @@
     <div class="small">La clave no se guarda. El estado de Grafito se cifra localmente en este navegador.</div>
   </div>
 </div>
-<script src="./grafito-v7.js?v=20-base"></script>
-<script src="./grafito-v9-patch.js?v=20-knowledge"></script>
-<script src="./grafito-v10-patch.js?v=20-intent"></script>
-<script src="./grafito-v11-patch.js?v=20-general"></script>
-<script src="./grafito-v12-patch.js?v=20-synthesis"></script>
-<script src="./grafito-v13-patch.js?v=20-capabilities"></script>
-<script src="./grafito-v14-patch.js?v=20-reason-action"></script>
-<script src="./grafito-v15-patch.js?v=20-self-autonomy"></script>
-<script src="./grafito-v16-orchestrator.js?v=20-orchestrator"></script>
-<script src="./grafito-v17-thought-core.js?v=20-thought"></script>
-<script src="./grafito-v18-cognitive-core.js?v=20-cognitive"></script>
-<script src="./grafito-v19-action-creator.js?v=20-creator"></script>
-<script src="./grafito-v20-action-first.js?v=20-action-first"></script>
+<script src="./grafito-v7.js?v=21-base"></script>
+<script src="./grafito-v9-patch.js?v=21-knowledge"></script>
+<script src="./grafito-v10-patch.js?v=21-intent"></script>
+<script src="./grafito-v11-patch.js?v=21-general"></script>
+<script src="./grafito-v12-patch.js?v=21-synthesis"></script>
+<script src="./grafito-v13-patch.js?v=21-capabilities"></script>
+<script src="./grafito-v14-patch.js?v=21-reason-action"></script>
+<script src="./grafito-v15-patch.js?v=21-self-autonomy"></script>
+<script src="./grafito-v16-orchestrator.js?v=21-orchestrator"></script>
+<script src="./grafito-v17-thought-core.js?v=21-thought"></script>
+<script src="./grafito-v18-cognitive-core.js?v=21-cognitive"></script>
+<script src="./grafito-v19-action-creator.js?v=21-creator"></script>
+<script src="./grafito-v20-action-first.js?v=21-action-first"></script>
+<script src="./grafito-v21-abstract-creator.js?v=21-abstract"></script>
 <script>
-if('serviceWorker' in navigator){window.addEventListener('load',async()=>{try{const regs=await navigator.serviceWorker.getRegistrations();for(const r of regs){if(r.scope.includes('/iter-public/'))await r.update().catch(()=>{});}const r=await navigator.serviceWorker.register('./sw.js?v=20',{scope:'./',updateViaCache:'none'});r.update().catch(()=>{});}catch(_){}});}
+if('serviceWorker' in navigator){window.addEventListener('load',async()=>{try{const regs=await navigator.serviceWorker.getRegistrations();for(const r of regs){if(r.scope.includes('/iter-public/'))await r.update().catch(()=>{});}const r=await navigator.serviceWorker.register('./sw.js?v=21',{scope:'./',updateViaCache:'none'});r.update().catch(()=>{});}catch(_){}});}
 document.addEventListener('click',event=>{if(event.target&&event.target.id==='unlock')navigator.storage?.persist?.().catch?.(()=>{});},{passive:true});
 </script>
 </body>
