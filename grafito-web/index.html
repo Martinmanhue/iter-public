@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090b0a">
+<title>Grafito</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+  <div id="field"></div>
+  <main id="center">
+    <div id="reply"></div>
+    <input id="entry" autocomplete="off" autocapitalize="sentences" spellcheck="true" placeholder="Escribe…">
+  </main>
+</div>
+<div id="lock">
+  <div id="lockbox">
+    <div class="brand">Grafito</div>
+    <input id="key" type="password" autocomplete="current-password" placeholder="Clave privada">
+    <button id="unlock">Entrar</button>
+    <div id="err"></div>
+    <div class="small">La clave no se guarda. El estado de Grafito se cifra localmente en este navegador.</div>
+  </div>
+</div>
+<script src="./app.js"></script>
+</body>
+</html>
