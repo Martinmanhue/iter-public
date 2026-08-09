@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#090b0a">
+<meta name="mobile-web-app-capable" content="yes">
 <title>Grafito</title>
+<link rel="manifest" href="./manifest.webmanifest">
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -24,7 +26,19 @@
     <div class="small">La clave no se guarda. El estado de Grafito se cifra localmente en este navegador.</div>
   </div>
 </div>
-<script src="./cpu-language.js?v=2"></script>
-<script type="module" src="./app.js?v=3"></script>
+<script src="./cpu-language.js?v=4"></script>
+<script type="module" src="./app.js?v=4"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js?v=4', { scope: './' }).catch(() => {});
+    });
+  }
+  document.addEventListener('click', event => {
+    if (event.target && event.target.id === 'unlock') {
+      navigator.storage?.persist?.().catch?.(() => {});
+    }
+  }, { passive: true });
+</script>
 </body>
 </html>
