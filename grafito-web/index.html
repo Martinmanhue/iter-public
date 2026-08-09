@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <title>Grafito</title>
 <link rel="manifest" href="./manifest.webmanifest">
-<link rel="stylesheet" href="./style.css?v=16">
+<link rel="stylesheet" href="./style.css?v=17">
 </head>
 <body>
 <div id="app">
@@ -26,17 +26,18 @@
     <div class="small">La clave no se guarda. El estado de Grafito se cifra localmente en este navegador.</div>
   </div>
 </div>
-<script src="./grafito-v7.js?v=16-base"></script>
-<script src="./grafito-v9-patch.js?v=16-knowledge"></script>
-<script src="./grafito-v10-patch.js?v=16-intent"></script>
-<script src="./grafito-v11-patch.js?v=16-general"></script>
-<script src="./grafito-v12-patch.js?v=16-synthesis"></script>
-<script src="./grafito-v13-patch.js?v=16-capabilities"></script>
-<script src="./grafito-v14-patch.js?v=16-reason-action"></script>
-<script src="./grafito-v15-patch.js?v=16-self-autonomy"></script>
-<script src="./grafito-v16-orchestrator.js?v=16-orchestrator"></script>
+<script src="./grafito-v7.js?v=17-base"></script>
+<script src="./grafito-v9-patch.js?v=17-knowledge"></script>
+<script src="./grafito-v10-patch.js?v=17-intent"></script>
+<script src="./grafito-v11-patch.js?v=17-general"></script>
+<script src="./grafito-v12-patch.js?v=17-synthesis"></script>
+<script src="./grafito-v13-patch.js?v=17-capabilities"></script>
+<script src="./grafito-v14-patch.js?v=17-reason-action"></script>
+<script src="./grafito-v15-patch.js?v=17-self-autonomy"></script>
+<script src="./grafito-v16-orchestrator.js?v=17-orchestrator"></script>
+<script src="./grafito-v17-thought-core.js?v=17-thought"></script>
 <script>
-if('serviceWorker' in navigator){window.addEventListener('load',async()=>{try{const regs=await navigator.serviceWorker.getRegistrations();for(const r of regs){if(r.scope.includes('/iter-public/'))await r.update().catch(()=>{});}const r=await navigator.serviceWorker.register('./sw.js?v=16',{scope:'./',updateViaCache:'none'});r.update().catch(()=>{});}catch(_){}});}
+if('serviceWorker' in navigator){window.addEventListener('load',async()=>{try{const regs=await navigator.serviceWorker.getRegistrations();for(const r of regs){if(r.scope.includes('/iter-public/'))await r.update().catch(()=>{});}const r=await navigator.serviceWorker.register('./sw.js?v=17',{scope:'./',updateViaCache:'none'});r.update().catch(()=>{});}catch(_){}});}
 document.addEventListener('click',event=>{if(event.target&&event.target.id==='unlock')navigator.storage?.persist?.().catch?.(()=>{});},{passive:true});
 </script>
 </body>
